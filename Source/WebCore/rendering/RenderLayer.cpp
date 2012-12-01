@@ -1391,8 +1391,10 @@ void RenderLayer::scrollTo(int x, int y)
     }
 
 #if PLATFORM(ANDROID)
+#if ENABLE(ANDROID_OVERFLOW_SCROLL)
     GraphicsLayerAndroid* backingLayer = 0;
     bool scrollableContent = false;
+#endif
 #endif
 
 #if USE(ACCELERATED_COMPOSITING)

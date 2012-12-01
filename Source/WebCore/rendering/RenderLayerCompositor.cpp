@@ -792,7 +792,11 @@ void RenderLayerCompositor::computeCompositingRequirements(RenderLayer* layer, O
                 // otherwise the content will be painted at a higher z-index. This breaks pages
                 // that set a large image with a z-index of -1 to implement a background image,
                 // for example.
+#if ENABLE(ANDROID_OVERFLOW_SCROLL)
                 bool childRequiresCompositing = childState.m_hasFixedElement || childState.m_hasScrollableElement;
+#else
+                bool childRequiresCompositing = childState.m_hasFixedElement;
+#endif
                 if (!willBeComposited && (childState.m_subtreeIsCompositing || childRequiresCompositing)) {
 #else
                 if (!willBeComposited && childState.m_subtreeIsCompositing) {
