@@ -442,7 +442,7 @@ void TransferQueue::addItemInPureColorQueue(const TileRenderInfo* renderInfo)
     // Tex Gen thread, thus we need to have a lock here.
     android::Mutex::Autolock lock(m_transferQueueItemLocks);
     TileTransferData data;
-    addItemCommon(renderInfo, GpuUpload, &data);
+    addItemCommon(renderInfo, CpuUpload, &data);
     data.pureColor = renderInfo->pureColor;
     m_pureColorTileQueue.append(data);
 }
